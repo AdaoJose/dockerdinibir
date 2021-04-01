@@ -1,0 +1,29 @@
+version: '3.2'
+services:
+   ubuntu_din:
+       tty: true
+       container_name: ubuntu_din
+       build: '.'
+       ports:
+           - 80:80
+           - 443:443
+       volumes:
+           - ./dinibir:/web
+           - ./dinibirapi:/server
+           - ./nginx:/etc/nginx/sites-available
+       links:
+           - mysql_din
+       restart: always
+       working_dir: /server
+   
+   mysql_din:
+       container_name: mysql_din
+       image: mysql
+       ports:
+           - 3306:3306
+       restart: always
+       environment:
+        MYSQL_ROOT_PASSWORD: josereis@1996
+        MYSQL_DATABASE: l_usuario
+       volumes:
+           - ./mysql:/var/lib/mysql
