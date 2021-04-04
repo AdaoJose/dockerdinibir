@@ -15,6 +15,8 @@ services:
            - mysql_din
        restart: always
        working_dir: /server
+       command: 
+            - cd /server && sudo php -S 0.0.0.0:80
    
    mysql_din:
        container_name: mysql_din
