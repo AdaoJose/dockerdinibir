@@ -17,6 +17,8 @@ services:
        working_dir: /server
        command: 
             - cd /server && sudo php -S 0.0.0.0:80
+            - ln -s /etc/nginx/sites-available/api.dinibir.com /etc/nginx/sites-enabled/api.dinibir.com
+            - ln -s /etc/nginx/sites-available/dinibir.com /etc/nginx/sites-enabled/dinibir.com
    
    mysql_din:
        container_name: mysql_din
