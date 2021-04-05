@@ -15,11 +15,7 @@ services:
            - mysql_din
        restart: always
        working_dir: /server
-       command: 
-            - cd /server && sudo php -S 0.0.0.0:80
-            - ln -s /etc/nginx/sites-available/api.dinibir.com /etc/nginx/sites-enabled/api.dinibir.com
-            - ln -s /etc/nginx/sites-available/dinibir.com /etc/nginx/sites-enabled/dinibir.com
-   
+       command: sudo php -S 127.0.0.1:80
    mysql_din:
        container_name: mysql_din
        image: mysql

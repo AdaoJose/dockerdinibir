@@ -19,4 +19,6 @@ RUN service nginx start
 RUN add-apt-repository ppa:certbot/certbot
 RUN service nginx reload
 RUN apt-get install python-certbot-nginx -y
+RUN ln -s /etc/nginx/sites-available/api.dinibir.com /etc/nginx/sites-enabled/api.dinibir.com
+RUN ln -s /etc/nginx/sites-available/dinibir.com /etc/nginx/sites-enabled/dinibir.com
 #RUN certbot --nginx -d teste0100.com -d www.teste0100.com
