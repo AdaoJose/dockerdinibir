@@ -7,7 +7,6 @@ services:
        ports:
            - 9001:80
            - 8080:8080
-           - 443:443
        volumes:
            - ./dinibir:/web
            - ./dinibirapi:/server
@@ -35,11 +34,13 @@ services:
         build: 'conf/nginx/'
         ports: 
             - 80:80
+            - 443:443
         links: 
             - ubuntu_din
         restart: always
         volumes: 
             - ./conf/nginx/sites-enabled:/etc/nginx/conf.d
             - ./dinibir:/web
+            - ./letsencrypt:/etc/letsencrypt
         working_dir: /web
         
