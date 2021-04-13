@@ -5,18 +5,20 @@ services:
        container_name: ubuntu_din
        build: '.'
        ports:
-           - 80:80
+           - 9001:80
+           - 8080:8080
            - 443:443
        volumes:
            - ./dinibir:/web
            - ./dinibirapi:/server
-           - ./nginx/sites-enabled:/etc/nginx/sites-enabled
-           - ./nginx/sites-available:/etc/nginx/sites-available
+           - ./nginx:/etc/nginx
+           #- ./nginx/sites-enabled:/etc/nginx/sites-enabled
+           #- ./nginx/sites-available:/etc/nginx/sites-available
        links:
            - mysql_din
        restart: always
        working_dir: /server
-       command: sudo php -S 127.0.0.1:80
+       command: php -S 0.0.0.0:8080
    mysql_din:
        container_name: mysql_din
        image: mysql
@@ -26,5 +28,18 @@ services:
        environment:
         MYSQL_ROOT_PASSWORD: josereis@1996
         MYSQL_DATABASE: l_usuario
-       volumes:
-           - ./mysql:/var/lib/mysql
+       #volumes:
+           #- ./mysql:/var/lib/mysql
+   nginx_din: 
+        container_name: nginx_din
+        build: 'conf/nginx/'
+        ports: 
+            - 80:80
+        links: 
+            - ubuntu_din
+        restart: always
+        volumes: 
+            - ./conf/nginx/sites-enabled:/etc/nginx/conf.d
+            - ./dinibir:/web
+        working_dir: /web
+        
