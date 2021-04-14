@@ -8,7 +8,6 @@ services:
            - 9001:80
            - 8080:8080
        volumes:
-           - ./dinibir:/web
            - ./dinibirapi:/server
            - ./nginx:/etc/nginx
            #- ./nginx/sites-enabled:/etc/nginx/sites-enabled
