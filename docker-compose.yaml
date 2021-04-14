@@ -9,9 +9,6 @@ services:
            - 8080:8080
        volumes:
            - ./dinibirapi:/server
-           - ./nginx:/etc/nginx
-           #- ./nginx/sites-enabled:/etc/nginx/sites-enabled
-           #- ./nginx/sites-available:/etc/nginx/sites-available
        links:
            - mysql_din
        restart: always
